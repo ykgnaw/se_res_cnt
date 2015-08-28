@@ -6,6 +6,10 @@ import re
 def search(keyword):
     url = 'http://www.baidu.com/s?wd=' + keyword
     html = urllib2.urlopen(url).read()
+    content = unicode(html, 'utf-8', 'ignore');
+
+    pattern = re.compile(r'div class="result c-container.*?>[\s\S]*?</div>.*?</div>')
+
     f = open('nihao.html','wb')
     f.write(html)
     f.close()
